@@ -1064,6 +1064,187 @@ footer{
     }
 }
 
+/* =========================
+   BEFORE / AFTER
+========================= */
+
+.before-after-section{
+  padding:110px 6vw;
+  background:var(--cream);
+}
+
+.before-after-section .section-head{
+  max-width:760px;
+  margin-bottom:42px;
+}
+
+.before-after-section h2{
+  margin:8px 0 14px;
+  font-size:clamp(42px,6vw,82px);
+  line-height:.95;
+  letter-spacing:-.05em;
+}
+
+.before-after-section p{
+  max-width:650px;
+  font-size:18px;
+  line-height:1.7;
+  color:#4b6170;
+}
+
+.before-after{
+  position:relative;
+  width:100%;
+  max-width:1200px;
+  height:620px;
+  margin:auto;
+  overflow:hidden;
+  border-radius:32px;
+  background:#dbeaf0;
+  box-shadow:0 30px 80px rgba(6,75,131,.16);
+  user-select:none;
+}
+
+.ba-image{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+.ba-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.ba-before{
+  z-index:1;
+}
+
+.ba-after{
+  z-index:2;
+  width:50%;
+}
+
+.ba-after img{
+  width:100vw;
+  max-width:none;
+}
+
+.ba-label{
+  position:absolute;
+  top:24px;
+  padding:10px 17px;
+  border-radius:999px;
+  background:rgba(255,255,255,.94);
+  color:var(--dark);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.12em;
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.ba-before .ba-label{
+  left:24px;
+}
+
+.ba-after .ba-label{
+  right:24px;
+  color:var(--green-dark);
+}
+
+.ba-divider{
+  position:absolute;
+  z-index:5;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:3px;
+  background:white;
+  transform:translateX(-50%);
+  pointer-events:none;
+  box-shadow:0 0 15px rgba(0,0,0,.18);
+}
+
+.ba-handle{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  display:grid;
+  place-items:center;
+  background:white;
+  color:var(--green-dark);
+  font-size:24px;
+  font-weight:900;
+  box-shadow:0 10px 30px rgba(0,0,0,.22);
+}
+
+.ba-slider{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  width:100%;
+  height:100%;
+  margin:0;
+  opacity:0;
+  cursor:ew-resize;
+}
+
+.ba-caption{
+  max-width:850px;
+  margin:30px auto 0;
+  display:flex;
+  gap:22px;
+  align-items:flex-start;
+}
+
+.ba-caption strong{
+  flex:none;
+  color:var(--green-dark);
+  font-size:18px;
+}
+
+.ba-caption span{
+  color:#58707e;
+  line-height:1.6;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .before-after-section{
+    padding:75px 5vw;
+  }
+
+  .before-after{
+    height:430px;
+    border-radius:22px;
+  }
+
+  .ba-caption{
+    display:block;
+  }
+
+  .ba-caption strong{
+    display:block;
+    margin-bottom:10px;
+  }
+
+  .ba-handle{
+    width:48px;
+    height:48px;
+    font-size:20px;
+  }
+
+}
+    
 </style>
 </head>
 
@@ -1083,7 +1264,8 @@ footer{
     <div class="nav-links">
 <a href="#explore">Открыть Беларусь</a>
 <a href="#real-city">Бренд в городе</a>
-<a href="#brand">О бренде</a>
+<a href="#before-after">До → После</a>
+<a href="#brand">О бренде</a>        
     </div>
 
 </nav>
@@ -1325,7 +1507,53 @@ footer{
 </section>
 
 
+<!-- BEFORE / AFTER -->
+<section class="before-after-section" id="before-after">
+  <div class="section-head">
+    <span class="eyebrow">БРЕНДИРОВАНИЕ</span>
+    <h2>ДО → ПОСЛЕ</h2>
+    <p>
+      Один город. Один маршрут. Но совсем другое ощущение —
+      когда Беларусь становится узнаваемой.
+    </p>
+  </div>
 
+  <div class="before-after">
+
+    <div class="ba-image ba-before">
+      <img src="img/minsk-before.jpg" alt="Минск до брендинга">
+      <span class="ba-label">ДО</span>
+    </div>
+
+    <div class="ba-image ba-after">
+      <img src="img/minsk-after.jpg" alt="Минск после брендинга">
+      <span class="ba-label">ПОСЛЕ</span>
+    </div>
+
+    <div class="ba-divider" id="baDivider">
+      <div class="ba-handle">↔</div>
+    </div>
+
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      class="ba-slider"
+      id="beforeAfter"
+      aria-label="Сравнить до и после"
+    >
+
+  </div>
+
+  <div class="ba-caption">
+    <strong>Блізка да сэрца</strong>
+    <span>
+      Фирменная система работает не только на бумаге —
+      она превращает городскую среду в единый туристический образ.
+    </span>
+  </div>
+</section>
 <!-- BRAND -->
 
 <section class="brand-section" id="brand">
@@ -1772,6 +2000,21 @@ function updateScene(){
 updateScene();
 
 </script>
+<script>
+const slider = document.getElementById("beforeAfter");
+const after = document.querySelector(".ba-after");
+const divider = document.getElementById("baDivider");
 
+function updateBeforeAfter(){
+  const value = slider.value;
+
+  after.style.width = value + "%";
+  divider.style.left = value + "%";
+}
+
+slider.addEventListener("input", updateBeforeAfter);
+
+updateBeforeAfter();
+</script>
 </body>
 </html>
